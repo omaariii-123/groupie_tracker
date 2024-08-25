@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+		<head> </head>
+<body id="body" style="text-align:center">
+	<form>
+			<div id="data"></div>
+		<script>
+				let data = {{.}};
+				let artists = data.Artists;
+				let locations = data.Locations;
+				let dates = data.Dates;
+				let str = document.URL;
+				str = str.split('/')[3];
+				id = str/1;
+				const name = document.createElement('h1');
+				name.innerHTML = artists[id].Name;
+				document.getElementById('data').appendChild(name);
+				const image = document.createElement('img');
+				image.src = artists[id].Image;
+				document.getElementById('data').appendChild(image);
+				const creationDate = document.createElement('h5');
+				creationDate.innerHTML = 'The year of creation : ' + artists[id].CreationDate;
+				document.getElementById('data').appendChild(creationDate);
+				const dateElement = document.createElement('h2');
+				dateElement.innerHTML = 'Concert Dates : ' + dates.Index[id].dates.join(', ');
+				document.getElementById('data').appendChild(dateElement);
+				const loc = document.createElement('h3');
+				loc.innerHTML = 'Locations : ' + locations.Index[id].locations.join(', ');
+				document.getElementById('data').appendChild(loc);
+				const members = document.createElement('h3');
+				members.innerHTML = 'Members : ' + artists[id].Members.join(', ');
+				document.getElementById('data').appendChild(members);
+	</script>
+	</form>
+</body>
+</html>

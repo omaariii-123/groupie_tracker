@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<body >
+		<form id = "form">
+				<div id="data" style="text-align : center"></div>
+		</form>
+	</body>
+			<script>
+					let artists = {{.}};
+					for (let i = 0; i < artists.length; i++){
+						let name = document.createElement('h1');
+							name.innerHTML = artists[i].Id + ' : ' + artists[i].Name; 
+							document.getElementById('data').appendChild(name);
+						let image = document.createElement('img');
+							image.src = artists[i].Image;
+							document.getElementById('data').appendChild(image);
+						let button = document.createElement('button');
+							button.innerHTML = 'More info';
+							button.setAttribute('onclick','myfunction(this)');
+							button.setAttribute('id',`${i}`);
+							document.getElementById('data').appendChild(button);
+						}
+				function myfunction(obj) {
+								document.getElementById('data').remove();
+								id = obj.id/1;
+								location.replace(`/${id}`);
+							}
+			</script>
+</html>
